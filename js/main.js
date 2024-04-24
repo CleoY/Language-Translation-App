@@ -18,3 +18,15 @@ function displayResults(results) {
     const resultsDiv = document.getElementById('results');
     resultsDiv.innerHTML = results;
 }
+
+function goToResults() {
+    window.location.href = 'results.html'; // Navigate to the results page
+}
+
+function goToAbout() {
+    window.location.href = 'about.html'; // Navigate to the about page
+}
+
+function goToHome() {
+    window.location.href = 'index.html'; // Navigate to the home page
+}
