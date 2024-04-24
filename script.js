@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Set up the request headers
         const headers = {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ${process.env.API_KEY}'
+            'Authorization': 'Bearer ' + getAPIKey()
         };
 
         // Make the request
@@ -87,5 +87,10 @@ document.addEventListener("DOMContentLoaded", function() {
         prevButton.disabled = currentIndex === 0;
         nextButton.disabled = currentIndex === prompts.length - 1;
         navigationSection.style.display = prompts.length > 1 ? "block" : "none";
+    }
+
+    // Function to get the OpenAI API Key
+    function getAPIKey() {
+        return "{{ secrets.API_KEY }}";
     }
 });
