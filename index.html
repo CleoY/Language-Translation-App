@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChatGPT Results</title>
+    <title>ChatGPT Web Service</title>
 </head>
 <body>
-    <h1>ChatGPT Results</h1>
+    <h1>ChatGPT Web Service</h1>
+    <input type="text" id="userInput" placeholder="Enter your message">
+    <button onclick="sendMessage()">Send</button>
     <div id="results"></div>
-    <button onclick="goBack()">Go Back</button>
 
+    <script src="api.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
