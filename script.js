@@ -3,7 +3,16 @@ document.addEventListener("DOMContentLoaded", function() {
     const inputText = document.getElementById("input-text");
     const outputText = document.getElementById("output-text");
     const responseSection = document.getElementById("response-section");
+    const navigationSection = document.getElementById("navigation-section");
+    const prevButton = document.getElementById("prev-button");
+    const nextButton = document.getElementById("next-button");
 
+    // Array to store prompts and responses
+    let prompts = [];
+    let responses = [];
+    let currentIndex = 0;
+
+    // Function to handle the "Generate" button click
     generateButton.addEventListener("click", function() {
         const prompt = inputText.value.trim();
         if (prompt === "") {
@@ -39,6 +48,12 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(data => {
             outputText.textContent = data.choices[0].text.trim();
             responseSection.style.display = "block";
+
+            // Add prompt and response to the arrays
+            prompts.push(prompt);
+            responses.push(data.choices[0].text.trim());
+            currentIndex = prompts.length - 1;
+            updateNavigationButtons();
         })
         .catch(error => {
             alert('Error:', error);
@@ -47,4 +62,30 @@ document.addEventListener("DOMContentLoaded", function() {
             generateButton.disabled = false;
         });
     });
+
+    // Function to handle the "Next" button click
+    nextButton.addEventListener("click", function() {
+        currentIndex++;
+        displayResponse();
+    });
+
+    // Function to handle the "Previous" button click
+    prevButton.addEventListener("click", function() {
+        currentIndex--;
+        displayResponse();
+    });
+
+    // Function to display the response based on the current index
+    function displayResponse() {
+        inputText.value = prompts[currentIndex];
+        outputText.textContent = responses[currentIndex];
+        updateNavigationButtons();
+    }
+
+    // Function to update navigation buttons based on the current index
+    function updateNavigationButtons() {
+        prevButton.disabled = currentIndex === 0;
+        nextButton.disabled = currentIndex === prompts.length - 1;
+        navigationSection.style.display = prompts.length > 1 ? "block" : "none";
+    }
 });
