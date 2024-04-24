@@ -3,32 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpenAI GPT-3 Web Service</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>ChatGPT Results</title>
 </head>
 <body>
-    <header>
-        <h1>OpenAI GPT-3 Web Service</h1>
-    </header>
+    <h1>ChatGPT Results</h1>
+    <div id="results"></div>
+    <button onclick="goBack()">Go Back</button>
 
-    <main>
-        <section id="form-section">
-            <h2>Generate Text</h2>
-            <textarea id="input-text" placeholder="Enter your prompt here..."></textarea><br>
-            <button id="generate-button">Generate</button>
-        </section>
-
-        <section id="response-section" style="display: none;">
-            <h2>Response</h2>
-            <p id="output-text"></p>
-        </section>
-
-        <section id="navigation-section" style="display: none;">
-            <button id="prev-button">Previous</button>
-            <button id="next-button">Next</button>
-        </section>
-    </main>
-
-    <script src="script.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
