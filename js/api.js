@@ -6,7 +6,7 @@ function sendRequest(message) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${apiKey}`
+            'Authorization': `Bearer ${API_KEY}`
         },
         body: JSON.stringify({
             model: 'gpt-3.5-turbo',
