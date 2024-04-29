@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>ChatGPT Results</h1>
+    <h1>Chinese to English</h1>
     <div class="response-container">
         <p><span class="attribute">Characters:</span> <span class="value">{{ chat_response.characters }}</span></p>
         <p><span class="attribute">Pinyin:</span> <span class="value">{{ chat_response.pinyin }}</span></p>
@@ -17,5 +17,8 @@
         <p class="subtitle">Pinyin of the example sentence:</p> <span class="value">{{ chat_response.sentencePinyin }}</span></p>
         <p><span class="attribute">Ex translation:</span> <span class="value">{{ chat_response.translation }}</span></p>
     </div>
+    <form action="/" method="get">
+        <button type="submit">Back to Home</button>
+    </form>
 </body>
 </html>

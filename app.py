@@ -35,6 +35,10 @@ def translate():
   result =  json.loads(result)
   return render_template('results.html', user_input=user_input, chat_response=result)
 
+# @app.route('translateChinese', methods = ['POST'])
+# def translateChinese():
+
+
 if __name__ == '__main__':
     app.run(debug=True)
 
