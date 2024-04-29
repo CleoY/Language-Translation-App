@@ -10,13 +10,10 @@ def home():
     return render_template('home.html')
 
 #@app.route('/translate', methods=['POST'])
-def translate(keyword):
+def translate(prompt, keyword):
   translationSetup = '''
-  For all of the following commands, please give results in the specified JSON formats.
-  When I type "Translate x to English", I want you to translate x into English, giving me the pinyin, English definition, and 1 example sentence in traditional Chinese with English translations. JSON list: characters, pinyin, English_definition, exSentenceChinese, sentencePinyin, translation.
-  When I type "Translate x to Chinese", I want you to translate x into traditional Chinese, giving me the characters, pinyin, synonyms, and 1 example sentence for the Chinese word with English translations. JSON list: original, characters, pinyin, synonyms, synonymPinyin, exSentenceChinese, sentencePinyin, translation.
-  When I type "Review x", I want you to make any necessary corrections to my grammar and spelling, or even give me suggestions for a better way to say what I mean. JSON list: original, corrected, suggestionNotes.
-  '''
+  For the following command, please give results in the specified JSON formats.
+  ''' + prompt
   user_input = request.form['user_input']
   # You can use the user_input here to send it to the GPT-3 model
   # For example:
@@ -36,20 +33,26 @@ def translate(keyword):
   return result, user_input
   # return render_template(htmlFile, user_input=user_input, chat_response=result)
 
-@app.route('/translateChinese', methods = ['POST'])
-def translateChinese():
-   result, user_input = translate("Translate")
+
+@app.route('/ChineseToEnglish', methods = ['POST'])
+def translateChineseToEnglish():
+   prompt = '''When I type "Translate x to English", I want you to translate x into English, giving me the pinyin, English definition, and 1 example sentence in traditional Chinese with English translations. JSON list: characters, pinyin, English_definition, exSentenceChinese, sentencePinyin, translation.'''
+   result, user_input = translate(prompt, "Translate")
    return render_template("results.html", user_input=user_input, chat_response=result, ChineseToEnglish = True)
 
-@app.route('/translateEnglish', methods = ['POST'])
-def translateEnglish():
-   result, user_input = translate("Translate")
+
+@app.route('/EnglishToChinese', methods = ['POST'])
+def translateEnglishToChinese():
+   prompt = '''When I type "Translate x to Chinese", I want you to translate x into traditional Chinese, repeating the original English word, giving me the characters, pinyin, synonyms, and 1 example sentence for the Chinese word with English translations. JSON list: original, characters, pinyin, synonyms, synonymPinyin, exSentenceChinese, sentencePinyin, translation.'''
+   result, user_input = translate(prompt, "Translate")
    return render_template("results.html", user_input=user_input, chat_response=result, ChineseToEnglish = False)
+
 
 @app.route('/review', methods = ['POST'])
 def review():
-   result, user_input = translate("Review")
-   return render_template("review.html", user_input=user_input, chat_response=result)
+  prompt = '''When I type "Review x", I want you to make any necessary corrections to my grammar and spelling, or even give me suggestions for a better way to say what I mean. JSON list: original, corrected, suggestionNotes.'''
+  result, user_input = translate(prompt, "Review")
+  return render_template("review.html", user_input=user_input, chat_response=result)
 
 
 
