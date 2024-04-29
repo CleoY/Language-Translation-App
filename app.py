@@ -8,8 +8,8 @@ client = OpenAI()
 def home():
     return render_template('home.html')
 
-@app.route('/chat', methods=['POST'])
-def chat():
+@app.route('/translate', methods=['POST'])
+def translate():
   translationSetup = '''
   For all of the following commands, please give results in the specified JSON formats.
   When I type "Translate x to English", I want you to translate x into English, giving me the pinyin, English definition, and 1 example sentence in traditional Chinese with English translations. JSON list: pinyin, English_definition, exSentenceChinese, sentencePinyin, translation.
