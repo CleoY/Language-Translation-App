@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChatGPT Results</title>
+    <title>Translate</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
@@ -15,7 +15,7 @@
     {% endif %}
     <div class="response-container">
         {% if not ChineseToEnglish %}
-            <p><span class="attribute">Original:</span> <span class="value">{{ chat_response.original }}</span></p>
+            <p><span class="attribute">English:</span> <span class="value">{{ chat_response.original }}</span></p>
         {% endif %}
         <p><span class="attribute">Characters:</span> <span class="value">{{ chat_response.characters }}</span></p>
         <p><span class="attribute">Pinyin:</span> <span class="value">{{ chat_response.pinyin }}</span></p>
@@ -23,17 +23,16 @@
             <p><span class="attribute">English definition:</span> <span class="value">{{ chat_response.English_definition }}</span></p>
         {% else %}
             {% if chat_response.synonyms %}
-            <p><span class="attribute">Synonyms:</span> <span class="value">{{ chat_response.synonyms | join(', ') }}</span></p>
-            {% endif %}
-            {% if chat_response.synonymPinyin %}
-            <span class="subtitle">{{ chat_response.synonymPinyin | join(', ') }}</span></p>
+                <p><span class="attribute">Synonyms:</span> <span class="value">{{ chat_response.synonyms | join(', ') }}</span></p>
+                <span class="subtitle">{{ chat_response.synonymPinyin | join(', ') }}</span></p>
+                <span class="value">{{ chat_response.synonymTranslations | join(', ') }}</span></p>
             {% endif %}
         {% endif %}
         <p><span class="attribute">Ex:</span> <span class="value">{{ chat_response.exSentenceChinese }}</span></p>
         <span class="subtitle">{{ chat_response.sentencePinyin }}</span></p>
         <!-- <p class="subtitle">Pinyin of the example sentence:</p> <span class="value">{{ chat_response.sentencePinyin }}</span></p> -->
-        <p><span class="attribute">Ex translation:</span> <span class="value">{{ chat_response.translation }}</span></p>
-        <p><span class="attribute">Response:</span> <span class="value">{{ chat_response }}</span></p>
+        <span class="value">{{ chat_response.translation }}</span></p>
+        <!-- <p><span class="attribute">Response:</span> <span class="value">{{ chat_response }}</span></p> -->
     </div>
     <form action="/" method="get">
         <button type="submit">Back to Home</button>

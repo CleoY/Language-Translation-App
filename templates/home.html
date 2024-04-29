@@ -4,22 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChatGPT Web Service</title>
+    <title>Circle Chinese</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>LanguageToGo</h1>
+    <h1>Circle Chinese</h1>
     <form action="/ChineseToEnglish" method="post">
-        <label for="user_input">Chinese -> English</label><br>
+        <label for="user_input">Chinese &rarr; English</label><br>
         <input type="text" id="user_input" name="user_input" required><br><br>
         <input type="submit" value="Translate">
     </form>
     <form action="/EnglishToChinese" method="post">
-        <label for="user_input">English -> Chinese</label><br>
+        <label for="user_input">English &rarr; Chinese</label><br>
         <input type="text" id="user_input" name="user_input" required><br><br>
         <input type="submit" value="Translate">
     </form>
     <form action="/review" method="post">
-        <label for="user_input">Review:</label><br>
+        <label for="user_input">Review</label><br>
         <input type="text" id="user_input" name="user_input" required><br><br>
         <input type="submit" value="Review">
     </form>

@@ -1,13 +1,79 @@
+html body h1 {
+    text-align: center;
+    font-family: Trebuchet MS, Arial, sans-serif;
+    color: #ffffff;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: Trebuchet MS, Arial, sans-serif;
     margin: 0;
     padding: 20px;
+    background-color: #241f3a; /* Change the background color */
+    color: #ffffff;
+    font-size: 20px;
 }
+
+button{
+    margin: 5px auto 10px; /* Center the buttons, add some top and bottom margin */
+    display: block; /* Display the buttons as block elements */
+    
+    /* Button styles */
+    padding: 10px 20px; /* Adjust the padding to change button size */
+    background-color: #4CAF50; /* Change the background color */
+    color: white; /* Change the text color */
+    font-size: 16px;
+    border: none; /* Remove button border */
+    border-radius: 5px; /* Apply border radius for rounded corners */
+    cursor: pointer;
+
+    font-family: Trebuchet MS, Arial, sans-serif;
+}
+
+button:hover{
+    background-color: #45a049; /* Darken background color on hover */
+}
+
+form {
+    text-align: center;
+}
+
+form label {
+    display: block; /* Display the labels as block elements */
+    margin-bottom: -10px; /* Reduce the bottom margin for spacing */
+}
+
+form input[type="text"] {
+    margin: 0 auto 1px; /* Center the input fields, add some bottom margin */
+    display: block; /* Display the input fields as block elements */
+}
+
+form input[type="submit"] {
+    margin: -30px auto 50px; /* Center the buttons, add some top and bottom margin */
+    display: block; /* Display the buttons as block elements */
+    
+    /* Button styles */
+    padding: 10px 20px; /* Adjust the padding to change button size */
+    background-color: #4CAF50; /* Change the background color */
+    color: white; /* Change the text color */
+    font-family: Trebuchet MS, Arial, sans-serif;
+    font-size: 16px;
+    border: none; /* Remove button border */
+    border-radius: 5px; /* Apply border radius for rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+
+/* Hover effect */
+form input[type="submit"]:hover {
+    background-color: #45a049; /* Darken background color on hover */
+}
+
 .response-container {
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 20px;
     margin-bottom: 20px;
+    /* text-align: center; */
 }
 .attribute {
     font-weight: bold;
