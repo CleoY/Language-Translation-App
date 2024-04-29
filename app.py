@@ -1,5 +1,6 @@
 from openai import OpenAI
 from flask import Flask, render_template, request
+import json
 
 app = Flask(__name__)
 client = OpenAI()
@@ -31,6 +32,7 @@ def translate():
     model="gpt-4-1106-preview"
   )
   result = chat_completion.choices[0].message.content
+  result =  json.loads(result)
   return render_template('results.html', user_input=user_input, chat_response=result)
 
 if __name__ == '__main__':

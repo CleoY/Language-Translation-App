@@ -10,7 +10,11 @@
 <body>
     <h1>ChatGPT Results</h1>
     <div class="response-container">
-        <p><span class="attribute">Response:</span> <span class="value">{{ chat_response }}</span></p>
+        <p><span class="attribute">Pinyin:</span> <span class="value">{{ chat_response.pinyin }}</span></p>
+        <p><span class="attribute">English definition:</span> <span class="value">{{ chat_response.English_definition }}</span></p>
+        <p><span class="attribute">Ex:</span> <span class="value">{{ chat_response.exSentenceChinese }}</span></p>
+        <p class="subtitle">Pinyin of the example sentence:</p> <span class="value">{{ chat_response.sentencePinyin }}</span></p>
+        <p><span class="attribute">Ex translation:</span> <span class="value">{{ chat_response.translation }}</span></p>
     </div>
 </body>
 </html>
