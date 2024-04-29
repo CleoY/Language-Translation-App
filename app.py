@@ -14,7 +14,7 @@ def translate(keyword):
   translationSetup = '''
   For all of the following commands, please give results in the specified JSON formats.
   When I type "Translate x to English", I want you to translate x into English, giving me the pinyin, English definition, and 1 example sentence in traditional Chinese with English translations. JSON list: characters, pinyin, English_definition, exSentenceChinese, sentencePinyin, translation.
-  When I type "Translate x to Chinese", I want you to translate x into traditional Chinese, giving me the characters, pinyin, synonyms, and 1 example sentence for the Chinese word with English translations. JSON list: characters, pinyin, synonyms, exSentenceChinese, sentencePinyin, translation.
+  When I type "Translate x to Chinese", I want you to translate x into traditional Chinese, giving me the characters, pinyin, synonyms, and 1 example sentence for the Chinese word with English translations. JSON list: original, characters, pinyin, synonyms, synonymPinyin, exSentenceChinese, sentencePinyin, translation.
   When I type "Review x", I want you to make any necessary corrections to my grammar and spelling, or even give me suggestions for a better way to say what I mean. JSON list: original, corrected, suggestionNotes.
   '''
   user_input = request.form['user_input']
@@ -39,7 +39,18 @@ def translate(keyword):
 @app.route('/translateChinese', methods = ['POST'])
 def translateChinese():
    result, user_input = translate("Translate")
-   return render_template("results.html", user_input=user_input, chat_response=result)
+   return render_template("results.html", user_input=user_input, chat_response=result, ChineseToEnglish = True)
+
+@app.route('/translateEnglish', methods = ['POST'])
+def translateEnglish():
+   result, user_input = translate("Translate")
+   return render_template("results.html", user_input=user_input, chat_response=result, ChineseToEnglish = False)
+
+@app.route('/review', methods = ['POST'])
+def review():
+   result, user_input = translate("Review")
+   return render_template("review.html", user_input=user_input, chat_response=result)
+
 
 
 if __name__ == '__main__':

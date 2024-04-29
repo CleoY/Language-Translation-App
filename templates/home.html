@@ -9,9 +9,19 @@
 <body>
     <h1>LanguageToGo</h1>
     <form action="/translateChinese" method="post">
-        <label for="user_input">Enter your message:</label><br>
+        <label for="user_input">Chinese -> English</label><br>
         <input type="text" id="user_input" name="user_input" required><br><br>
-        <input type="submit" value="Go">
+        <input type="submit" value="Translate">
+    </form>
+    <form action="/translateEnglish" method="post">
+        <label for="user_input">English -> Chinese</label><br>
+        <input type="text" id="user_input" name="user_input" required><br><br>
+        <input type="submit" value="Translate">
+    </form>
+    <form action="/review" method="post">
+        <label for="user_input">Review:</label><br>
+        <input type="text" id="user_input" name="user_input" required><br><br>
+        <input type="submit" value="Review">
     </form>
 </body>
 </html>

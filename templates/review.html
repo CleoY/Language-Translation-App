@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT Results</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Chinese to English</h1>
+    <div class="response-container">
+        <p><span class="attribute">Original:</span> <span class="value">{{ chat_response.original }}</span></p>
+        <p><span class="attribute">Correction:</span> <span class="value">{{ chat_response.corrected }}</span></p>
+        <p><span class="attribute">Notes:</span> <span class="value">{{ chat_response.suggestionNotes }}</span></p>
+    </div>
+    <form action="/" method="get">
+        <button type="submit">Back to Home</button>
+    </form>
+</body>
+</html>
