@@ -31,7 +31,7 @@ def translate():
     model="gpt-4-1106-preview"
   )
   result = chat_completion.choices[0].message.content
-  return render_template('home.html', user_input=user_input, chat_response=result)
+  return render_template('results.html', user_input=user_input, chat_response=result)
 
 if __name__ == '__main__':
     app.run(debug=True)
