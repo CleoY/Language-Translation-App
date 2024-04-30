@@ -23,7 +23,7 @@ def translate(prompt, keyword):
       "content": translationSetup
     }, {
       "role": "assistant",
-      "content": keyword + user_input
+      "content": keyword + " " + user_input
     }],
     response_format={"type": "json_object"},
     model="gpt-4-1106-preview"
