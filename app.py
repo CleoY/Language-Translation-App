@@ -9,6 +9,7 @@ client = OpenAI()
 def home():
   return render_template('home.html')
 
+# Function to call ChatGPT API
 def translate(prompt, keyword):
   translationSetup = '''
   For the following command, please give results in the specified JSON formats. Any and all Chinese should be traditional characters.
@@ -32,20 +33,21 @@ def translate(prompt, keyword):
   return result, user_input
 
 
+# Call ChatGPT API w/ user input and route to Chinese -> English page.
 @app.route('/ChineseToEnglish', methods = ['POST'])
 def translateChineseToEnglish():
   prompt = '''When I type "Translate x to English", I want you to translate x into English, giving me the pinyin, English definition, and 1 example sentence in traditional Chinese with English translations. JSON list: characters, pinyin, English_definition, exSentenceChinese, sentencePinyin, translation.'''
   result, user_input = translate(prompt, "Translate")
   return render_template("translate.html", user_input=user_input, chat_response=result, ChineseToEnglish = True)
 
-
+# Call ChatGPT API w/ user input and route to English -> Chinese page.
 @app.route('/EnglishToChinese', methods = ['POST'])
 def translateEnglishToChinese():
   prompt = '''When I type "Translate x to Chinese", I want you to translate x into traditional Chinese, repeating the original English word, giving me the characters, pinyin, synonyms, synonym translations, and 1 example sentence for the Chinese word with English translations. JSON list: original, characters, pinyin, synonyms, synonymTranslations, synonymPinyin, exSentenceChinese, sentencePinyin, translation.'''
   result, user_input = translate(prompt, "Translate")
   return render_template("translate.html", user_input=user_input, chat_response=result, ChineseToEnglish = False)
 
-
+# Call ChatGPT API w/ user input and route to Review page.
 @app.route('/review', methods = ['POST'])
 def review():
   prompt = '''When I type "Review x", I want you to make any necessary corrections to my grammar and spelling, or even give me suggestions for a better way to say what I mean. JSON list: original, corrected, suggestionNotes.'''
